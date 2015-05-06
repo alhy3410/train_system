@@ -31,4 +31,13 @@ describe('City') do
       expect(City.find(new_city.id())).to(eq(new_city))
     end
   end
+
+  describe('#update') do
+    it('will let you update city name in the database') do
+      new_city = City.new({:name => "Portland"})
+      new_city.save()
+      new_city.update({:name => "Eugene"})
+      expect(new_city.name()).to(eq("Eugene"))
+    end
+  end
 end

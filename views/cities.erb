@@ -1,0 +1,27 @@
+<h1>Welcome to the Cities page</h1>
+
+<p>Add a cities to the database:</p>
+
+<form action="/cities" method="post">
+  <label for="name">Cities's name:</label>
+  <input id="name" name="name" type="text">
+
+  <button type="submit">Add cities</button>
+</form>
+
+
+<% if @cities.any?() %>
+  <p>Click on a cities to see information about it and add trains to it:</p>
+
+  <ul>
+    <% @cities.each do |cities| %>
+    <li><a href="/cities/<%= cities.id() %>"><%= cities.name() %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no cities added yet!</p>
+<% end %>
+
+<p><a href="/trains">See all trains</a></p>
+
+<p><a href="/">Return to Main Page</a></p>

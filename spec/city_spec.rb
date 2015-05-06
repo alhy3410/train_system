@@ -7,4 +7,11 @@ describe('City') do
       expect(new_city.name()).to(eq("Portland"))
     end
   end
+
+  describe('.all') do
+    it('will return an empty array to hold all cities') do
+      expect(City.all()).to(eq([]))
+    end
+  end
+  
 end

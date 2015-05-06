@@ -7,4 +7,11 @@ describe('Train') do
       expect(new_train.name()).to(eq("South"))
     end
   end
+
+  describe('.all') do
+    it('will initiaily return an empty array of trains') do
+      expect(Train.all()).to(eq([]))
+    end
+  end
+  
 end

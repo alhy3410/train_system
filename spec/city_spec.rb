@@ -40,4 +40,15 @@ describe('City') do
       expect(new_city.name()).to(eq("Eugene"))
     end
   end
+
+  describe('#delete') do
+    it('lets you delete a city from the database') do
+      new_city = City.new({:name => "Portland"})
+      new_city.save()
+      new_city2 = City.new({:name => "Seattle"})
+      new_city2.save()
+      new_city.delete()
+      expect(City.all()).to(eq([new_city2]))
+    end
+  end
 end

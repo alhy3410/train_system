@@ -13,5 +13,12 @@ describe('City') do
       expect(City.all()).to(eq([]))
     end
   end
-  
+
+  describe('#save') do
+    it('will store the city into the city list') do
+      new_city = City.new({:name => "Portland"})
+      new_city.save()
+      expect(City.all()).to(eq([new_city]))
+    end
+  end
 end

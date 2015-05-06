@@ -36,4 +36,15 @@ class Train
   define_method(:==) do |another_train|
     self.name().==(another_train.name())
   end
+
+  define_method(:update) do |attributes|
+    @name = attributes.fetch(:name, @name)
+    @id = self.id()
+    DB.exec("UPDATE trains SET name = '#{@name}' WHERE id = #{@id};")
+  end
+
+  define_method(:delete) do
+    @id = self.id()
+    DB.exec("DELETE FROM trains WHERE id = #{@id}")
+  end
 end

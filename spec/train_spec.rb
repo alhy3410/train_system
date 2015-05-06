@@ -31,4 +31,24 @@ describe('Train') do
       expect(Train.find(new_train2.id())).to(eq(new_train2))
     end
   end
+
+  describe('#update') do
+    it('will let you update train name in the database') do
+      new_train = Train.new({:name => "South"})
+      new_train.save()
+      new_train.update({:name => "East"})
+      expect(new_train.name()).to(eq("East"))
+    end
+  end
+
+  describe('#delete') do
+    it('lets you delete a train from the database') do
+      new_train = Train.new({:name => "South"})
+      new_train.save()
+      new_train2 = Train.new({:name => "North"})
+      new_train2.save()
+      new_train.delete()
+      expect(Train.all()).to(eq([new_train2]))
+    end
+  end
 end
